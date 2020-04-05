@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MY PROGRAM LIST</title>
+    </head>
+    <body>
+      <%- include('header') %>
+      <h2><%=docs[0].brandName%> : 학생 목록 조회</h2>
+      <hr>
+      <% if (docs && docs[0].matching !== undefined) { %>
+        <% for(var i = 0; i < docs[0].matching.length; i++){ %>
+            <label><%=docs[0].matching[i].applyer%></label>
+
+            <% if (docs[0].matching[i].isAccepted === false) { %>
+                <form method="post" action="/process/accept/stu/<%=docs[0]._id%>/<%=docs[0].matching[i].applyer%>">
+                    <input type="submit" value="신청받기">
+                </form>
+            <% }else{ %> 
+                <form method="get" action="/praclog/list/<%=id%>/<%=docs[0]._id%>">
+                    <input type="submit" value="실습일지 조회">
+                </form>
+            <% } %>
+
+        <% } %>
+      <% } %>
+      <%- include('footer') %>
+    </body>
+</html>

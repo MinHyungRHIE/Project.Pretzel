@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>PROGRAM DETAILS</title>
+    </head>
+    <style>
+      input{border:none}
+    </style>
+    <body>
+      <%- include('header') %>
+
+      <h2><%=docs[0].brandName%></h2>
+      <p>기관/기업 정보</p>
+      <label for="bizLicenceNo">등록번호</label>
+      <input type="text" name="bizLicenceNo" id="bizLicenceNo" disabled><br>
+      <label for="address">주소</label>
+      <input type="text" name="address" id="address" disabled><br>
+      <label for="reprePhoneNum">대표전화</label>
+      <input type="text" name="reprePhoneNum" id="reprePhoneNum" disabled><br>
+      <label for="repreName">대표자</label>
+      <input type="text" name="repreName" id="repreName" disabled><br>
+      <label for="email">이메일</label>
+      <input type="text" name="email" id="email" disabled><br>
+
+      <h3>실습정보</h3>
+      <label for="pracTime">실습시간</label>
+      <input type="text" name="pracTime" id="pracTime" disabled><br>
+      <label>실습운영정보</label>
+      <input type="text" name="pracPeriod" id="pracPeriod" disabled>
+      <input type="text" name="pracDulation" id="pracDulation" disabled><br>
+      <label for="instructionPerPerson">1인당 지도인원</label>
+      <input type="text" name="instructionPerPerson" id="instructionPerPerson" disabled><br>
+      <label for="pracFee">실습비</label>
+      <input type="text" name="pracFee" id="pracFee" disabled><br>
+      <label for="ptbName">담당자명</label>
+      <input type="text" name="ptbName" id="ptbName" disabled><br>
+      <% if (memberType==="stu") { %>
+        <form method="post" action="/process/program/stu/apply/<%=docs[0]._id%>">
+          <input type="submit" value="신청하기">
+        </form>
+     <% }else if(memberType==="biz"){%>
+      <form method="get" action="/program/biz/update/<%=docs[0]._id%>">
+        <input type="submit" value="수정하기">
+      </form>
+     <% } %>
+      <form method="get" action="/program/list">
+        <input type="submit" value="목록으로">
+      </form>
+      <%- include('footer') %>
+    </body>
+    <script src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript">
+      $( document ).ready( function() {
+        var bizLicenceNo = $('input#bizLicenceNo').val("<%=docs[0].bizLicenceNo%>");
+        var address = $('input#address').val("<%=docs[0].address%>");
+        var reprePhoneNum = $('input#reprePhoneNum').val("<%=docs[0].reprePhoneNum%>");
+        var repreName = $('input#repreName').val("<%=docs[0].repreName%>");
+        var email = $('input#email').val("<%=docs[0].email%>");
+        var pracTime = $('input#pracTime').val("<%=docs[0].pracTime%>");
+        var pracPeriod = $('input#pracPeriod').val("<%=docs[0].pracPeriod%>");
+        var pracDulation = $('input#pracDulation').val("<%=docs[0].pracDulation%>");
+        var instructionPerPerson = $('input#instructionPerPerson').val("<%=docs[0].instructionPerPerson%>");
+        var pracFee = $('input#pracFee').val("<%=docs[0].pracFee%>");
+        var ptbName = $('input#ptbName').val("<%=docs[0].ptbName%>");
+        } );
+    </script>
+    </html>

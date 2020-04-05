@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MY PROGRAM LIST</title>
+    </head>
+    <body>
+      <%- include('header') %>
+      <h2>내가 등록한 프로그램 조회</h2>
+      <hr>
+      <% if (docs) { %>
+        <% for(var i = 0; i < docs.length; i++){ %>
+            <% if (docs[i].owner.id === id) { %>
+              <h4><%=docs[i].brandName%></h4>
+              <p><%=docs[i].pracPeriod%></p>
+              <p><%=docs[i].pracDulation%></p>
+              <form method="get" action="/stulist/biz/manage/<%=docs[i]._id%>">
+                  <input type="submit" value="학생관리">
+              </form>
+            <% } %>
+        <% } %>
+      <% } %>
+      <%- include('footer') %>
+    </body>
+</html>

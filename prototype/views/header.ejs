@@ -1,0 +1,21 @@
+<a href='/'>LOGO</a>
+<% if (memberType==="stu") { %>
+    <a href='/program/stu/mylist'>내가 신청한 실습</a>
+    <a href='/program/list'>실습공고</a>
+    <p><%=name%>님 안녕하세요[STU]</p>
+    <form method="post" action="/process/logout">
+        <input type="submit" name="" value="로그아웃하기">
+    </form>
+<% }else if(memberType==="biz"){%>
+    <a href='/program/biz/mylist'>내가 등록한 실습</a>
+    <a href='/program/biz/add'>실습공고등록</a>
+    <a href='/program/list'>실습공고</a>
+    <p><%=name%>님 안녕하세요[BIZ]</p>
+    <form method="post" action="/process/logout">
+        <input type="submit" name="" value="로그아웃하기">
+    </form>
+<% }else{ %>
+    <a href='/program/list'>실습공고</a>
+    <a href='/login'>로그인/회원가입</a>
+<% } %>
+<br>

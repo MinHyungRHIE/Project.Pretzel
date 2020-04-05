@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PROGRAM LIST</title>
+    </head>
+    <body>
+      <%- include('header') %>
+      <h2>기관/기업 검색</h2>
+      <label for="field">분야</label>
+      <select id="field" name="field">
+      <label for="area">소재지</label>
+      <select id="area" name="area">
+      <label for="pracFee">실습비</label>
+      <select id="pracFee" name="pracFee">
+      <label for="period">기간</label>
+      <select id="period" name="period">
+      <label for="week">요일</label>
+      <select id="week" name="week">
+      </select>
+      <form method="get" action="/program/list">
+        <label for="brandName">실습기관 이름검색</label>
+        <input type =text name="brandName" name="brandName">
+        <input type="submit">
+      </form>
+      <p><%=result%></p>
+      <hr>
+      <% if (docs) { %>
+        <% for(var i = 0; i < docs.length; i++){ %>
+          <form method="get" action="/program/details/<%=docs[i]._id%>">
+            <button type="submit">
+              <p><%=docs[i].brandName%></p>
+              <p><%=docs[i].pracPeriod%></p>
+              <p><%=docs[i].pracDulation%></p>
+            </button>
+          </form>
+        <% } %>
+      <% } %>
+      <%- include('footer') %>
+    </body>
+</html>

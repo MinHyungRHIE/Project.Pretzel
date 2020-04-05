@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PRACTICE LIST</title>
+    </head>
+    <body>
+    <%- include('header') %>
+    <h2>기관/기업 검색</h2>
+    <% if (memberType==="stu") { %>
+        <form method="get" action="/praclog/stu/add/<%=docs[0]._id%>"><!--실습일지ID -->
+            <input type="submit" name="" value="실습일지 작성하기">
+         </form>
+    <% }else if(memberType==="biz"){%>
+      <form method="post" action="/?">
+         <input type="submit" name="" value="실습완료시키기">
+      </form>
+    <% }else{ %>
+        <h3>로그인을 해주세요</h3>
+    <% } %>
+    <%=result%>
+    <hr>
+    <% if (docs) { %>
+        <% for(var i = 0; j < docs[0].logList.length; j++){ %>
+
+            <p>실습날짜 : <%=docs[0].logList[i].pracDate%></p>
+            <p>실습시간 : <%=docs[0].logList[i].pracTime%></p>
+            <p>실습내용 : <%=docs[0].logList[i].pracContent%></p>
+
+            <% if (memberType==="stu"){ %>
+                <form method="post" action="/?">
+                    <input type="submit" name="" value="실습일지 수정하기">
+                </form>
+            <% }else if(memberType==="biz"){%>
+                <%if(docs[0].logList[i].isConfirmed===false){%>
+                    <form method="post" action="/?">
+                        <input type="submit" name="" value="실습일지 확인하기">
+                    </form>
+                <%}else{%>
+                    <p>[확인됨]</p>
+                <%}%>
+            <% } %>
+        <% } %>
+    <% } %>
+    <%- include('footer') %>
+    </body>
+</html>
+<!--
+        "_id" : ObjectId("5e6f86c7e89ac515282684ed"),
+        "programId" : ObjectId("5e6f8670e89ac515282684eb"),
+        "stuId" : "aaaa",
+        "bizId" : "BBBB",
+        "logList":[
+            {
+                pracDate : "2020년 03월 17일"
+                pracTime : "09:00 - 18:00",
+                pracContent : "오늘 내가 실습한 내용은...",
+                isConfirmed : false
+            },
+            {
+                pracDate : "2020년 03월 18일"
+                pracTime : "09:00 - 18:00",
+                pracContent : "오늘 내가 실습한 내용은...",
+                isConfirmed : false
+            }
+        ]
+ -->

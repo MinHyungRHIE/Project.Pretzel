@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>PRACTICE ADD</title>
+    </head>
+    <body>
+      <%- include('header') %>
+      <form method="post" action="/process/praclog/stu/add/<%=docs[0]._id%>"> <!-- 실습일지ID -->
+        <h3>실습일지 작성</h3>
+        <label for="pracDate">실습날짜</label>
+        <input type="text" name="pracDate" id="pracDate"><br>
+        <label for="pracTime">실습시간</label>
+        <input type="text" name="pracTime" id="pracTime"><br>
+        <label for="pracContent">실습내용</label>
+        <input type="text" name="pracContent" id="pracContent"><br>
+        <input type="submit" value="등록하기">
+      </form>
+      <%- include('footer') %>
+    </body>
